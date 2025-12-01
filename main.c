@@ -7,7 +7,7 @@
 
 #define CANAL_LM35 1
 
-#define LIMITE_TEMPERATURA 25.0
+#define LIMITE_TEMPERATURA 30.0
 
 const uint8_t CANAL_SENSOR_AGUA = 0;
 const uint8_t AMOSTRAS_AGUA = 16;
@@ -208,7 +208,7 @@ void rodar_motor_PWM(float tempC) {
     return;
   }
 
-  if (tempC < LIMITE_TEMPERATURA) {
+  if (tempC > LIMITE_TEMPERATURA) {
     if (!pwm_iniciado) {
       DDRD |= (1 << PD6);
       TCCR0A |= (1 << COM0A1) | (1 << WGM01) | (1 << WGM00);
